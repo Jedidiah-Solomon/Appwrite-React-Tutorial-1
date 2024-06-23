@@ -305,3 +305,38 @@ useEffect(() => {
   }, []);
   ```;
 ````
+
+### When a server is running and you want to locate, maybe you forced all terminals to close
+
+1. Use the code below e.g if the port is 4173
+   ` netstat -ano | findstr :4173`
+
+TCP 127.0.0.1:4173 0.0.0.0:0 LISTENING 4172
+TCP 127.0.0.1:4173 127.0.0.1:63562 TIME_WAIT 0
+TCP 127.0.0.1:4173 127.0.0.1:63565 TIME_WAIT 0
+TCP 127.0.0.1:4173 127.0.0.1:63566 TIME_WAIT 0
+TCP 127.0.0.1:4173 127.0.0.1:63572 TIME_WAIT 0
+TCP 127.0.0.1:63573 127.0.0.1:4173 TIME_WAIT
+
+2. Run the following command to kill the process with the identified PID (replace PID with the actual PID you found):
+
+`taskkill /PID <PID> /F` e.g in the result for instrance above, the PID = 4172, SO use
+`taskkill /PID 4172 /F` CMD/POWERSHELL OR `taskkill //PID 4172 //F` Gitbash
+
+Note:
+
+1. Display All Connections and Listening Ports `netstat -a`
+   This command lists all active connections and the ports on which the computer is listening.
+
+2. Display Network Statistics `netstat -e`
+   This command shows Ethernet statistics, such as the number of bytes and packets sent and received.
+
+Summary
+netstat -a: List all connections and listening ports.
+netstat -e: Display Ethernet statistics.
+netstat -r: Show the routing table.
+netstat -p tcp: Display active TCP connections.
+netstat -p udp: Display active UDP connections.
+netstat -b: Show PID and program names.
+netstat -ano | findstr :4173: Find which process is using port 4173.
+taskkill /PID <PID> /F: Kill the process by PID.
