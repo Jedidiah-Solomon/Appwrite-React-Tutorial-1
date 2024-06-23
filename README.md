@@ -1,1 +1,1 @@
-# Appwrite-React-Tutorial-1 🤝
+# APPWRITE + React 🤝
