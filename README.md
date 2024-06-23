@@ -19,7 +19,7 @@ Clone the repository:
 
 ```
 git clone <repository_url>
-cd appwrite-react-app
+cd Appwrite-React-Tutorial-1
 ```
 
 ### Install dependencies:
