@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
-import { databases } from "../appwrite/config";
+import db from "../appwrite/databases";
+import NoteForm from "../components/NoteForm";
+import { Query } from "appwrite";
+import Note from "../components/Note";
 
 function Notes() {
   const [notes, setNotes] = useState([]);
@@ -9,27 +12,30 @@ function Notes() {
   }, []);
 
   const init = async () => {
-    const vite_database_id = import.meta.env.VITE_DATABASE_ID;
-    const vite_collection_id_notes = import.meta.env.VITE_COLLECTION_ID_NOTES;
+    try {
+      const response = await db.notes.list([Query.orderDesc("$createdAt")]);
+      setNotes(response.documents);
 
-    const response = await databases.listDocuments(
-      vite_database_id,
-      vite_collection_id_notes
-    );
-
-    setNotes(response.documents);
+      console.log("Fetched documents:", response.documents);
+    } catch (err) {
+      console.error("Error fetching documents:", err);
+    }
   };
 
   return (
-    <div>
+    <>
+      <div>
+        <h1>✍️ My Todo List</h1>
+      </div>
+
+      <NoteForm setNotes={setNotes} />
+
       <div>
         {notes.map((note) => (
-          <div key={note.$id}>
-            {note.body} {note.$id}
-          </div>
+          <Note key={note.$id} setNotes={setNotes} noteData={note} />
         ))}
       </div>
-    </div>
+    </>
   );
 }
 

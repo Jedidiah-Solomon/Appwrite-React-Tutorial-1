@@ -292,3 +292,16 @@ Values:
 Usage: Choose the appropriate display mode based on your application's design and functionality. For example, if your application is meant to function like a native app with its own interface and no browser controls, "standalone" is appropriate.
 Example: "display": "standalone" specifies that the web app should be displayed in standalone mode.
 ```
+
+````
+useEffect(() => {
+    console.log("Notes component mounted");
+
+    init();
+
+    return () => {
+      console.log("Notes component unmounted");
+    };
+  }, []);
+  ```;
+````
