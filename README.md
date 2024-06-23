@@ -67,8 +67,8 @@ Adjust vite.config.js for specific development or build requirements.
 
 ## Learn More
 
-[Vite Documentation ](https://vitejs.dev/)
-[React Documentation](https://react.dev/)
+[Vite Documentation ](https://vitejs.dev/) <br>
+[React Documentation](https://react.dev/) <br>
 [Appwrite Documentation](https://appwrite.io/)
 
 ## License
