@@ -4,6 +4,10 @@
 
 This project integrates Appwrite with a React application using Vite as the build tool. Appwrite is a backend service that simplifies backend development tasks. This README provides instructions on setting up and running the project.
 
+### Live Site
+
+```https://taskyman.onrender.com```
+
 ### Prerequisites
 
 Before starting, make sure you have the following installed on your machine:
